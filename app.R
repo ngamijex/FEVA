@@ -3,7 +3,6 @@
 # World-Class Technology Company Website
 # Clean, Scalable, and Future-Ready Architecture
 # ================================================================
-
 # Load Required Libraries
 library(shiny)
 library(shinydashboard)
@@ -75,6 +74,8 @@ ui <- tagList(
     
     # Custom JavaScript (will be added later)
     includeScript("www/feva-animations.js"),
+    includeScript("www/tech-globe.js"),
+    includeScript("www/matrix-rain.js"),
     
     # Initialize Shiny JS
     useShinyjs()
@@ -107,6 +108,30 @@ ui <- tagList(
     id = "main-app",
     
     # ===== NAVIGATION HEADER =====
+    tags$head(
+      # Link to your custom navbar CSS
+      tags$link(rel = "stylesheet", type = "text/css", href = "nav.css"),
+      
+      # Link to your custom navbar JavaScript
+      tags$script(src = "nav.js"),
+      
+      # Roadmap JavaScript
+      tags$script(src = "roadmap.js"),
+      
+      # Optional: Add Google Fonts for enhanced typography
+      tags$link(
+        rel = "stylesheet",
+        href = "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      ),
+      
+      # Optional: Add Font Awesome for icons
+      tags$link(
+        rel = "stylesheet",
+        href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      )
+    ),
+    
+    # Your updated header section
     tags$header(
       class = "site-header",
       id = "site-header",
@@ -118,11 +143,8 @@ ui <- tagList(
         div(
           class = "brand-section",
           div(
-            div(
-              class = "brand-text",
-              h1("FEVA", class = "brand-name"),
-              span("TechAfrica", class = "brand-subtitle")
-            )
+            class = "brand-logo",
+            img(src = "feva.png", alt = "FEVA", class = "brand-image")
           )
         ),
         
@@ -168,8 +190,7 @@ ui <- tagList(
         # Header Actions
         div(
           class = "header-actions",
-          
-          
+
           # CTA Button
           actionButton(
             "header_cta",
@@ -216,13 +237,6 @@ ui <- tagList(
             class = "hero-content",
             
             
-            # Hero Badge
-            div(
-              class = "hero-badge",
-              icon("award", class = "badge-icon"),
-              span("Award-Winning Technology Solutions")
-            ),
-            
             # Hero Headlines
             div(
               class = "hero-headlines",
@@ -240,123 +254,20 @@ ui <- tagList(
               )
             ),
             
-            # Hero Statistics
-            div(
-              class = "hero-stats",
-             
-              
-              div(class = "stat-item",
-                  div(class = "stat-number", "200+"),
-                  div(class = "stat-label", "Projects Delivered")
-              ),
-              div(class = "stat-item",
-                  div(class = "stat-number", "50+"),
-                  div(class = "stat-label", "Global Partners")
-              ),
-              div(class = "stat-item",
-                  div(class = "stat-number", "1M+"),
-                  div(class = "stat-label", "Lives Impacted")
-              ),
-              div(class = "stat-item",
-                  div(class = "stat-number", "99.9%"),
-                  div(class = "stat-label", "Success Rate")
-              )
-            ),
-            
-            # Hero Actions
-            div(
-              class = "hero-actions",
-             
-              
-              actionButton(
-                "hero_explore",
-                "Explore Our Solutions",
-                class = "btn btn-primary btn-lg",
-                icon = icon("rocket")
-              ),
-              
-              actionButton(
-                "hero_demo",
-                "Watch Demo",
-                class = "btn btn-secondary btn-lg",
-                icon = icon("play")
-              )
-            )
+            # Hero Statistics - Removed
+            # Hero Actions - Removed
           ),
           
           # Updated R HTML Structure
           div(
             class = "hero-visual",
-            
-            # Main image carousel container
-            div(
-              class = "hero-image-container",
               
-              # 3D Rotating Image Carousel
+              # Binary Matrix Code Rain Animation
               div(
-                class = "image-carousel",
-                
-                # Image 1 - Center/Main
-                div(
-                  class = "carousel-image main-image",
-                  img(src = "image1.jpg", alt = "AI Solutions", class = "hero-image"),
-                  div(class = "image-overlay", "AI Solutions")
-                ),
-                
-                # Image 2 - Cloud Services
-                div(
-                  class = "carousel-image cloud-image",
-                  img(src = "image2.jpg", alt = "Cloud Services", class = "hero-image"),
-                  div(class = "image-overlay", "Cloud Services")
-                ),
-                
-                # Image 3 - Data Analytics
-                div(
-                  class = "carousel-image data-image",
-                  img(src = "image3.jpg", alt = "Data Analytics", class = "hero-image"),
-                  div(class = "image-overlay", "Data Analytics")
-                ),
-                
-                # Image 4 - Mobile Development
-                div(
-                  class = "carousel-image mobile-image",
-                  img(src = "image4.jpg", alt = "Mobile Development", class = "hero-image"),
-                  div(class = "image-overlay", "Mobile Development")
-                ),
-                
-                # Image 5 - Security
-                div(
-                  class = "carousel-image security-image",
-                  img(src = "image5.jpg", alt = "Security Solutions", class = "hero-image"),
-                  div(class = "image-overlay", "Security Solutions")
-                )
-              ),
-              
-              # Floating particles/orbs
-              div(
-                class = "floating-particles",
-                div(class = "particle particle-1"),
-                div(class = "particle particle-2"),
-                div(class = "particle particle-3"),
-                div(class = "particle particle-4"),
-                div(class = "particle particle-5"),
-                div(class = "particle particle-6")
-              ),
-              
-              # Enhanced Floating Tech Icons
-              div(
-                class = "floating-icons",
-                div(class = "floating-icon icon-1", icon("robot")),
-                div(class = "floating-icon icon-2", icon("cloud")),
-                div(class = "floating-icon icon-3", icon("database")),
-                div(class = "floating-icon icon-4", icon("mobile-alt")),
-                div(class = "floating-icon icon-5", icon("shield-alt")),
-                div(class = "floating-icon icon-6", icon("cogs")),
-                div(class = "floating-icon icon-7", icon("chart-line")),
-                div(class = "floating-icon icon-8", icon("code"))
+                class = "matrix-rain",
+                id = "matrixRain"
               )
             )
-          )
           
         )
       ),
@@ -366,101 +277,283 @@ ui <- tagList(
         class = "about-section",
         id = "about",
         
+        # About Background Elements
+        div(class = "about-background"),
+        
+        # About Container
         div(
-          class = "section-container",
+          class = "about-container",
           
-          # Section Header
+          # About Header
           div(
-            class = "section-header",
-            `data-aos` = "fade-up",
+            class = "about-header",
             
-            div(class = "section-badge", "About Feva"),
-            h2(class = "section-title",
-               "Pioneering Africa's ",
-               span("Digital Renaissance", class = "title-accent")
+            div(
+              class = "about-badge",
+              icon("code", class = "badge-icon"),
+              span("Technology Excellence")
             ),
-            p(class = "section-subtitle",
-              "We are more than a technology company - we are architects of Africa's digital future, building intelligent solutions that bridge the gap between innovation and impact."
+            
+            h2(
+              class = "about-title",
+              "Building Africa's",
+              tags$br(),
+              "Digital Future"
+            ),
+            
+            p(
+              class = "about-subtitle",
+              "We are a cutting-edge technology company specializing in enterprise solutions, cloud infrastructure, and digital transformation across Africa. Our mission is to bridge the technology gap and empower businesses with world-class digital capabilities."
             )
           ),
           
-          # About Content Grid
-          div(
-            class = "about-grid",
-            
-            # Mission Card
-            div(
-              class = "about-card mission-card",
-             
-              
-              div(class = "card-icon", icon("target")),
-              h3(class = "card-title", "Our Mission"),
-              p(class = "card-description",
-                "To democratize access to advanced technology across Africa, empowering businesses and institutions with AI-driven solutions that create sustainable impact."
-              )
-            ),
-            
-            # Vision Card
-            div(
-              class = "about-card vision-card",
-              
-              
-              div(class = "card-icon", icon("eye")),
-              h3(class = "card-title", "Our Vision"),
-              p(class = "card-description",
-                "To become the leading technology catalyst in Africa, recognized globally for innovation, excellence, and transformative digital solutions."
-              )
-            ),
-            
-            # Values Card
-            div(
-              class = "about-card values-card",
-              
-              
-              div(class = "card-icon", icon("heart")),
-              h3(class = "card-title", "Our Values"),
-              p(class = "card-description",
-                "Innovation, integrity, and impact drive everything we do. We believe in ethical technology, sustainable solutions, and inclusive growth."
-              )
-            )
-          ),
           
-          # Company Journey Timeline
+          # Technology Stack - Interactive Globe
           div(
-            class = "company-timeline",
+            class = "tech-stack-section",
             
+            h3(class = "tech-stack-title", "Our Technology Stack"),
             
-            h3(class = "timeline-title", "Our Journey"),
-            
-            div(class = "timeline-container",
-                div(class = "timeline-item",
-                    div(class = "timeline-year", "2020"),
-                    div(class = "timeline-content",
-                        h4("Foundation"),
-                        p("Founded with a vision to transform African technology landscape")
-                    )
+            div(
+              class = "tech-globe-container",
+              
+              div(
+                class = "tech-globe",
+                id = "techGlobe",
+                
+                # Technology icons positioned on sphere - Expanded collection with better spacing
+                # Cloud & Infrastructure (Equator)
+                div(class = "tech-icon", "data-tech" = "aws", style = "transform: rotateY(0deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", alt = "AWS")
                 ),
-                div(class = "timeline-item",
-                    div(class = "timeline-year", "2022"),
-                    div(class = "timeline-content",
-                        h4("Expansion"),
-                        p("Expanded operations to serve 15+ countries across Africa")
-                    )
+                div(class = "tech-icon", "data-tech" = "azure", style = "transform: rotateY(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg", alt = "Azure")
                 ),
-                div(class = "timeline-item",
-                    div(class = "timeline-year", "2024"),
-                    div(class = "timeline-content",
-                        h4("Innovation"),
-                        p("Launched AI-powered solutions serving 1M+ users")
-                    )
+                div(class = "tech-icon", "data-tech" = "gcp", style = "transform: rotateY(50deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg", alt = "Google Cloud")
                 ),
-                div(class = "timeline-item",
-                    div(class = "timeline-year", "2025"),
-                    div(class = "timeline-content",
-                        h4("Future"),
-                        p("Pioneering next-generation technologies for global impact")
-                    )
+                div(class = "tech-icon", "data-tech" = "docker", style = "transform: rotateY(75deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", alt = "Docker")
+                ),
+                div(class = "tech-icon", "data-tech" = "kubernetes", style = "transform: rotateY(100deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg", alt = "Kubernetes")
+                ),
+                div(class = "tech-icon", "data-tech" = "terraform", style = "transform: rotateY(125deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg", alt = "Terraform")
+                ),
+                div(class = "tech-icon", "data-tech" = "ansible", style = "transform: rotateY(150deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg", alt = "Ansible")
+                ),
+                div(class = "tech-icon", "data-tech" = "jenkins", style = "transform: rotateY(175deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg", alt = "Jenkins")
+                ),
+                div(class = "tech-icon", "data-tech" = "gitlab", style = "transform: rotateY(200deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg", alt = "GitLab")
+                ),
+                div(class = "tech-icon", "data-tech" = "github", style = "transform: rotateY(225deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg", alt = "GitHub")
+                ),
+                div(class = "tech-icon", "data-tech" = "git", style = "transform: rotateY(250deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", alt = "Git")
+                ),
+                div(class = "tech-icon", "data-tech" = "linux", style = "transform: rotateY(275deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg", alt = "Linux")
+                ),
+                div(class = "tech-icon", "data-tech" = "nginx", style = "transform: rotateY(300deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg", alt = "Nginx")
+                ),
+                div(class = "tech-icon", "data-tech" = "apache", style = "transform: rotateY(325deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apache/apache-original-wordmark.svg", alt = "Apache")
+                ),
+                div(class = "tech-icon", "data-tech" = "vagrant", style = "transform: rotateY(350deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vagrant/vagrant-original.svg", alt = "Vagrant")
+                ),
+                
+                # Programming Languages (Upper Hemisphere)
+                div(class = "tech-icon", "data-tech" = "python", style = "transform: rotateY(12deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt = "Python")
+                ),
+                div(class = "tech-icon", "data-tech" = "javascript", style = "transform: rotateY(37deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", alt = "JavaScript")
+                ),
+                div(class = "tech-icon", "data-tech" = "typescript", style = "transform: rotateY(62deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg", alt = "TypeScript")
+                ),
+                div(class = "tech-icon", "data-tech" = "go", style = "transform: rotateY(87deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg", alt = "Go")
+                ),
+                div(class = "tech-icon", "data-tech" = "rust", style = "transform: rotateY(112deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-original.svg", alt = "Rust")
+                ),
+                div(class = "tech-icon", "data-tech" = "java", style = "transform: rotateY(137deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", alt = "Java")
+                ),
+                div(class = "tech-icon", "data-tech" = "csharp", style = "transform: rotateY(162deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg", alt = "C#")
+                ),
+                div(class = "tech-icon", "data-tech" = "php", style = "transform: rotateY(187deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg", alt = "PHP")
+                ),
+                div(class = "tech-icon", "data-tech" = "ruby", style = "transform: rotateY(212deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-original.svg", alt = "Ruby")
+                ),
+                div(class = "tech-icon", "data-tech" = "kotlin", style = "transform: rotateY(237deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg", alt = "Kotlin")
+                ),
+                div(class = "tech-icon", "data-tech" = "swift", style = "transform: rotateY(262deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg", alt = "Swift")
+                ),
+                div(class = "tech-icon", "data-tech" = "scala", style = "transform: rotateY(287deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg", alt = "Scala")
+                ),
+                div(class = "tech-icon", "data-tech" = "clojure", style = "transform: rotateY(312deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clojure/clojure-original.svg", alt = "Clojure")
+                ),
+                div(class = "tech-icon", "data-tech" = "elixir", style = "transform: rotateY(337deg) rotateX(40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elixir/elixir-original.svg", alt = "Elixir")
+                ),
+                
+                # Frontend Frameworks (Upper-Mid Hemisphere)
+                div(class = "tech-icon", "data-tech" = "react", style = "transform: rotateY(18deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt = "React")
+                ),
+                div(class = "tech-icon", "data-tech" = "vue", style = "transform: rotateY(43deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg", alt = "Vue.js")
+                ),
+                div(class = "tech-icon", "data-tech" = "angular", style = "transform: rotateY(68deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg", alt = "Angular")
+                ),
+                div(class = "tech-icon", "data-tech" = "svelte", style = "transform: rotateY(93deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg", alt = "Svelte")
+                ),
+                div(class = "tech-icon", "data-tech" = "nextjs", style = "transform: rotateY(118deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", alt = "Next.js", style = "filter: invert(1);")
+                ),
+                div(class = "tech-icon", "data-tech" = "nuxt", style = "transform: rotateY(143deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg", alt = "Nuxt.js")
+                ),
+                div(class = "tech-icon", "data-tech" = "nodejs", style = "transform: rotateY(168deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg", alt = "Node.js")
+                ),
+                div(class = "tech-icon", "data-tech" = "express", style = "transform: rotateY(193deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", alt = "Express")
+                ),
+                div(class = "tech-icon", "data-tech" = "nestjs", style = "transform: rotateY(218deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg", alt = "NestJS")
+                ),
+                div(class = "tech-icon", "data-tech" = "fastapi", style = "transform: rotateY(243deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg", alt = "FastAPI")
+                ),
+                div(class = "tech-icon", "data-tech" = "django", style = "transform: rotateY(268deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg", alt = "Django")
+                ),
+                div(class = "tech-icon", "data-tech" = "flask", style = "transform: rotateY(293deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg", alt = "Flask")
+                ),
+                div(class = "tech-icon", "data-tech" = "rails", style = "transform: rotateY(318deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rails/rails-plain-wordmark.svg", alt = "Rails")
+                ),
+                div(class = "tech-icon", "data-tech" = "spring", style = "transform: rotateY(343deg) rotateX(25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg", alt = "Spring")
+                ),
+                
+                # Databases (Lower-Mid Hemisphere)
+                div(class = "tech-icon", "data-tech" = "postgresql", style = "transform: rotateY(20deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg", alt = "PostgreSQL")
+                ),
+                div(class = "tech-icon", "data-tech" = "mongodb", style = "transform: rotateY(45deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg", alt = "MongoDB")
+                ),
+                div(class = "tech-icon", "data-tech" = "mysql", style = "transform: rotateY(70deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg", alt = "MySQL")
+                ),
+                div(class = "tech-icon", "data-tech" = "redis", style = "transform: rotateY(95deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg", alt = "Redis")
+                ),
+                div(class = "tech-icon", "data-tech" = "elasticsearch", style = "transform: rotateY(120deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elasticsearch/elasticsearch-original.svg", alt = "Elasticsearch")
+                ),
+                div(class = "tech-icon", "data-tech" = "cassandra", style = "transform: rotateY(145deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cassandra/cassandra-original.svg", alt = "Cassandra")
+                ),
+                div(class = "tech-icon", "data-tech" = "neo4j", style = "transform: rotateY(170deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neo4j/neo4j-original.svg", alt = "Neo4j")
+                ),
+                div(class = "tech-icon", "data-tech" = "influxdb", style = "transform: rotateY(195deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/influxdb/influxdb-original.svg", alt = "InfluxDB")
+                ),
+                div(class = "tech-icon", "data-tech" = "sqlite", style = "transform: rotateY(220deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg", alt = "SQLite")
+                ),
+                div(class = "tech-icon", "data-tech" = "firebase", style = "transform: rotateY(245deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg", alt = "Firebase")
+                ),
+                div(class = "tech-icon", "data-tech" = "supabase", style = "transform: rotateY(270deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg", alt = "Supabase")
+                ),
+                div(class = "tech-icon", "data-tech" = "prisma", style = "transform: rotateY(295deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg", alt = "Prisma")
+                ),
+                div(class = "tech-icon", "data-tech" = "oracle", style = "transform: rotateY(320deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg", alt = "Oracle")
+                ),
+                div(class = "tech-icon", "data-tech" = "sqlserver", style = "transform: rotateY(345deg) rotateX(-25deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg", alt = "SQL Server")
+                ),
+                
+                # AI/ML & Data Science (Lower Hemisphere)
+                div(class = "tech-icon", "data-tech" = "tensorflow", style = "transform: rotateY(25deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg", alt = "TensorFlow")
+                ),
+                div(class = "tech-icon", "data-tech" = "pytorch", style = "transform: rotateY(50deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", alt = "PyTorch")
+                ),
+                div(class = "tech-icon", "data-tech" = "opencv", style = "transform: rotateY(75deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original.svg", alt = "OpenCV")
+                ),
+                div(class = "tech-icon", "data-tech" = "pandas", style = "transform: rotateY(100deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg", alt = "Pandas")
+                ),
+                div(class = "tech-icon", "data-tech" = "numpy", style = "transform: rotateY(125deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg", alt = "NumPy")
+                ),
+                div(class = "tech-icon", "data-tech" = "scikit", style = "transform: rotateY(150deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg", alt = "Scikit-learn")
+                ),
+                div(class = "tech-icon", "data-tech" = "jupyter", style = "transform: rotateY(175deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg", alt = "Jupyter")
+                ),
+                div(class = "tech-icon", "data-tech" = "r", style = "transform: rotateY(200deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg", alt = "R")
+                ),
+                div(class = "tech-icon", "data-tech" = "matlab", style = "transform: rotateY(225deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg", alt = "MATLAB")
+                ),
+                div(class = "tech-icon", "data-tech" = "julia", style = "transform: rotateY(250deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg", alt = "Julia")
+                ),
+                div(class = "tech-icon", "data-tech" = "hadoop", style = "transform: rotateY(275deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/hadoop/hadoop-original.svg", alt = "Hadoop")
+                ),
+                div(class = "tech-icon", "data-tech" = "spark", style = "transform: rotateY(300deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachespark/apachespark-original.svg", alt = "Apache Spark")
+                ),
+                div(class = "tech-icon", "data-tech" = "kafka", style = "transform: rotateY(325deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg", alt = "Apache Kafka")
+                ),
+                div(class = "tech-icon", "data-tech" = "airflow", style = "transform: rotateY(350deg) rotateX(-40deg) translateZ(180px);",
+                    img(src = "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apacheairflow/apacheairflow-original.svg", alt = "Apache Airflow")
                 )
+              ),
+              
+              div(
+                class = "tech-info-panel",
+                id = "techInfoPanel",
+                div(class = "tech-info-content",
+                    h4(id = "techName", "Hover over a technology"),
+                    p(id = "techDescription", "Select a technology icon to learn more about our expertise.")
+                )
+              )
             )
           )
         )
@@ -471,298 +564,369 @@ ui <- tagList(
         class = "services-section",
         id = "services",
         
+        # Services Background Elements
+        div(class = "services-background"),
+        
+        # Services Container
         div(
-          class = "section-container",
+          class = "services-container",
           
-          # Section Header
+          # Services Header
           div(
-            class = "section-header",
-            `data-aos` = "fade-up",
+            class = "services-header",
             
-            div(class = "section-badge", "Our Services"),
-            h2(class = "section-title",
-               "Comprehensive Technology ",
-               span("Solutions", class = "title-accent")
+            div(
+              class = "services-badge",
+              icon("cogs", class = "badge-icon"),
+              span("Enterprise Solutions")
             ),
-            p(class = "section-subtitle",
-              "From AI-powered analytics to blockchain solutions, we deliver end-to-end technology services that drive innovation and growth."
+            
+            h2(
+              class = "services-title",
+              "Technology Services",
+              tags$br(),
+              "That Drive Results"
+            ),
+            
+            p(
+              class = "services-subtitle",
+              "We deliver comprehensive technology solutions designed for African businesses. From cloud infrastructure to custom software development, our services are built to scale and perform in demanding enterprise environments."
             )
           ),
           
-          # Services Grid
+          # Main Services Grid
           div(
-            class = "services-grid",
-            
-            # AI & Machine Learning Service
-            div(
-              class = "service-card ai-service",
-              
-              
-              div(class = "service-header",
-                  div(class = "service-icon", icon("brain")),
-                  div(class = "service-badge", "AI/ML"),
-                  h3(class = "service-title", "Artificial Intelligence")
-              ),
-              
-              div(class = "service-image",
-                  img(src = "assets/services/ai-service.svg", alt = "AI & ML Services", class = "service-img")
-              ),
-              
-              div(class = "service-content",
-                  p(class = "service-description",
-                    "Advanced AI and machine learning solutions that transform data into actionable insights."
-                  ),
-                  
-                  div(class = "service-features",
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Predictive Analytics")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Natural Language Processing")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Computer Vision")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Deep Learning Models")
-                      )
-                  )
-              ),
-              
-              div(class = "service-footer",
-                  actionButton("learn_ai", "Learn More", class = "btn btn-outline")
-              )
-            ),
-            
-            # Blockchain Service
-            div(
-              class = "service-card blockchain-service",
-             
-              
-              div(class = "service-header",
-                  div(class = "service-icon", icon("link")),
-                  div(class = "service-badge", "Blockchain"),
-                  h3(class = "service-title", "Blockchain Solutions")
-              ),
-              
-              div(class = "service-image",
-                  img(src = "assets/services/blockchain-service.svg", alt = "Blockchain Services", class = "service-img")
-              ),
-              
-              div(class = "service-content",
-                  p(class = "service-description",
-                    "Secure, transparent, and decentralized solutions for modern business challenges."
-                  ),
-                  
-                  div(class = "service-features",
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Smart Contracts")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("DeFi Applications")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("NFT Platforms")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Token Economy")
-                      )
-                  )
-              ),
-              
-              div(class = "service-footer",
-                  actionButton("learn_blockchain", "Learn More", class = "btn btn-outline")
-              )
-            ),
+            class = "main-services-grid",
             
             # Cloud Infrastructure Service
-            div(
-              class = "service-card cloud-service",
-             
-              
-              div(class = "service-header",
-                  div(class = "service-icon", icon("cloud")),
-                  div(class = "service-badge", "Cloud"),
-                  h3(class = "service-title", "Cloud Infrastructure")
-              ),
-              
-              div(class = "service-image",
-                  img(src = "assets/services/cloud-service.svg", alt = "Cloud Services", class = "service-img")
-              ),
-              
-              div(class = "service-content",
-                  p(class = "service-description",
-                    "Scalable, secure, and efficient cloud solutions that power modern applications."
-                  ),
-                  
-                  div(class = "service-features",
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Cloud Migration")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("DevOps Automation")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Container Orchestration")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Microservices Architecture")
-                      )
-                  )
-              ),
-              
-              div(class = "service-footer",
-                  actionButton("learn_cloud", "Learn More", class = "btn btn-outline")
-              )
+            div(class = "service-card primary-service",
+                div(class = "service-header",
+                    div(class = "service-icon", icon("cloud")),
+                    div(class = "service-badge", "Infrastructure")
+                ),
+                h3("Cloud Infrastructure"),
+                p("Enterprise-grade cloud solutions with 99.9% uptime guarantee. We design, deploy, and manage scalable infrastructure across AWS, Azure, and Google Cloud platforms."),
+                
+                div(class = "service-features",
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Auto-scaling & Load Balancing")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Disaster Recovery & Backup")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("24/7 Monitoring & Support")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Security & Compliance")
+                    )
+                ),
+                
+                div(class = "service-tech",
+                    span("AWS", class = "tech-tag"),
+                    span("Azure", class = "tech-tag"),
+                    span("Docker", class = "tech-tag"),
+                    span("Kubernetes", class = "tech-tag")
+                ),
+                
+                div(class = "service-footer",
+                    actionButton("learn_cloud", "Learn More", class = "btn btn-outline"),
+                    actionButton("contact_cloud", "Get Quote", class = "btn btn-primary")
+                )
             ),
             
-            # Mobile Development Service
-            div(
-              class = "service-card mobile-service",
-              
-              
-              div(class = "service-header",
-                  div(class = "service-icon", icon("mobile-alt")),
-                  div(class = "service-badge", "Development"),
-                  h3(class = "service-title", "Mobile & Web Apps")
-              ),
-              
-              div(class = "service-image",
-                  img(src = "assets/services/mobile-service.svg", alt = "Mobile Development", class = "service-img")
-              ),
-              
-              div(class = "service-content",
-                  p(class = "service-description",
-                    "User-centric applications that deliver exceptional experiences across all platforms."
-                  ),
-                  
-                  div(class = "service-features",
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Cross-Platform Apps")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Progressive Web Apps")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("API Development")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("UI/UX Design")
-                      )
-                  )
-              ),
-              
-              div(class = "service-footer",
-                  actionButton("learn_mobile", "Learn More", class = "btn btn-outline")
-              )
+            # Software Development Service
+            div(class = "service-card",
+                div(class = "service-header",
+                    div(class = "service-icon", icon("code")),
+                    div(class = "service-badge", "Development")
+                ),
+                h3("Custom Software Development"),
+                p("Tailored software solutions built for African markets. From web applications to mobile apps, we create scalable, secure, and user-friendly software."),
+                
+                div(class = "service-features",
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Web & Mobile Applications")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("API Development & Integration")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Database Design & Optimization")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Quality Assurance & Testing")
+                    )
+                ),
+                
+                div(class = "service-tech",
+                    span("Python", class = "tech-tag"),
+                    span("JavaScript", class = "tech-tag"),
+                    span("React", class = "tech-tag"),
+                    span("Node.js", class = "tech-tag")
+                ),
+                
+                div(class = "service-footer",
+                    actionButton("learn_dev", "Learn More", class = "btn btn-outline"),
+                    actionButton("contact_dev", "Get Quote", class = "btn btn-primary")
+                )
             ),
             
             # Data Analytics Service
-            div(
-              class = "service-card data-service",
-             
-              
-              div(class = "service-header",
-                  div(class = "service-icon", icon("chart-bar")),
-                  div(class = "service-badge", "Analytics"),
-                  h3(class = "service-title", "Data Analytics")
-              ),
-              
-              div(class = "service-image",
-                  img(src = "assets/services/data-service.svg", alt = "Data Analytics", class = "service-img")
-              ),
-              
-              div(class = "service-content",
-                  p(class = "service-description",
-                    "Transform raw data into strategic insights that drive business growth and innovation."
-                  ),
-                  
-                  div(class = "service-features",
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Business Intelligence")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Data Visualization")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Real-time Analytics")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Predictive Modeling")
-                      )
-                  )
-              ),
-              
-              div(class = "service-footer",
-                  actionButton("learn_data", "Learn More", class = "btn btn-outline")
-              )
+            div(class = "service-card",
+                div(class = "service-header",
+                    div(class = "service-icon", icon("chart-line")),
+                    div(class = "service-badge", "Analytics")
+                ),
+                h3("Data Analytics & BI"),
+                p("Transform your data into actionable insights. We build comprehensive analytics platforms that help businesses make data-driven decisions and optimize operations."),
+                
+                div(class = "service-features",
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Real-time Data Processing")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Business Intelligence Dashboards")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Predictive Analytics & ML")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Data Warehousing & ETL")
+                    )
+                ),
+                
+                div(class = "service-tech",
+                    span("PostgreSQL", class = "tech-tag"),
+                    span("MongoDB", class = "tech-tag"),
+                    span("Elasticsearch", class = "tech-tag"),
+                    span("Apache Kafka", class = "tech-tag")
+                ),
+                
+                div(class = "service-footer",
+                    actionButton("learn_data", "Learn More", class = "btn btn-outline"),
+                    actionButton("contact_data", "Get Quote", class = "btn btn-primary")
+                )
             ),
             
             # Cybersecurity Service
-            div(
-              class = "service-card security-service",
-             
-              
-              div(class = "service-header",
-                  div(class = "service-icon", icon("shield-alt")),
-                  div(class = "service-badge", "Security"),
-                  h3(class = "service-title", "Cybersecurity")
+            div(class = "service-card",
+                div(class = "service-header",
+                    div(class = "service-icon", icon("shield-alt")),
+                    div(class = "service-badge", "Security")
+                ),
+                h3("Cybersecurity Solutions"),
+                p("Protect your business with enterprise-grade security solutions. We implement comprehensive security measures to safeguard your data and infrastructure."),
+                
+                div(class = "service-features",
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Security Assessment & Auditing")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Identity & Access Management")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Network Security & Firewalls")
+                    ),
+                    div(class = "feature-item",
+                        icon("check-circle", class = "feature-icon"),
+                        span("Compliance & Risk Management")
+                    )
+                ),
+                
+                div(class = "service-tech",
+                    span("OAuth 2.0", class = "tech-tag"),
+                    span("JWT", class = "tech-tag"),
+                    span("SSL/TLS", class = "tech-tag"),
+                    span("Firewall", class = "tech-tag")
+                ),
+                
+                div(class = "service-footer",
+                    actionButton("learn_security", "Learn More", class = "btn btn-outline"),
+                    actionButton("contact_security", "Get Quote", class = "btn btn-primary")
+                )
+            ),
+            
+            # Additional Services Card
+            div(class = "service-card primary-service additional-services-card",
+                div(class = "service-header",
+                    div(class = "service-icon", icon("th")),
+                    div(class = "service-badge", "More Services")
+                ),
+                h3("Additional Services"),
+                p("Comprehensive technology solutions tailored to your business needs, from mobile development to digital transformation."),
+                
+                div(class = "additional-services-list",
+                    div(class = "additional-service-item",
+                        icon("mobile-alt", class = "item-icon"),
+                        div(class = "item-content",
+                            h5("Mobile Development"),
+                            p("Native and cross-platform applications")
+                        )
+                    ),
+                    div(class = "additional-service-item",
+                        icon("database", class = "item-icon"),
+                        div(class = "item-content",
+                            h5("Database Management"),
+                            p("Design, optimization, and migration")
+                        )
+                    ),
+                    div(class = "additional-service-item",
+                        icon("headset", class = "item-icon"),
+                        div(class = "item-content",
+                            h5("Technical Support"),
+                            p("24/7 support and maintenance")
+                        )
+                    ),
+                    div(class = "additional-service-item",
+                        icon("graduation-cap", class = "item-icon"),
+                        div(class = "item-content",
+                            h5("Training & Consulting"),
+                            p("Technology training and strategy")
+                        )
+                    ),
+                    div(class = "additional-service-item",
+                        icon("sync", class = "item-icon"),
+                        div(class = "item-content",
+                            h5("System Integration"),
+                            p("Seamless integration solutions")
+                        )
+                    ),
+                    div(class = "additional-service-item",
+                        icon("rocket", class = "item-icon"),
+                        div(class = "item-content",
+                            h5("Digital Transformation"),
+                            p("End-to-end transformation strategies")
+                        )
+                    )
+                ),
+                
+                div(class = "service-footer",
+                    actionButton("view_all_services", "View All Services", class = "btn btn-outline"),
+                    actionButton("contact_services", "Get Started", class = "btn btn-primary")
+                )
+            )
+          ),
+          
+          # Process Section - Interactive Roadmap
+          div(
+            class = "process-section",
+            
+            div(class = "process-background"),
+            div(class = "process-container",
+              div(class = "process-header",
+                div(class = "process-badge",
+                  icon("route", class = "badge-icon"),
+                  span("Development Process")
+                ),
+                h2("Our Development Process", class = "process-title"),
+                p("A systematic approach to delivering exceptional software solutions", class = "process-subtitle")
               ),
               
-              div(class = "service-image",
-                  img(src = "assets/services/security-service.svg", alt = "Cybersecurity", class = "service-img")
-              ),
-              
-              div(class = "service-content",
-                  p(class = "service-description",
-                    "Comprehensive security solutions that protect your digital assets and ensure compliance."
+              # Interactive Roadmap
+              div(class = "roadmap-container",
+                # SVG Path for clean professional line
+                tags$svg(class = "roadmap-path", viewBox = "0 0 400 2000", preserveAspectRatio = "none",
+                  tags$path(class = "roadmap-line", d = "M 200 50 
+                    Q 280 150 200 250
+                    Q 120 350 200 450
+                    Q 280 550 200 650
+                    Q 120 750 200 850
+                    Q 280 950 200 1050
+                    Q 120 1150 200 1250
+                    Q 280 1350 200 1450
+                    Q 120 1550 200 1650
+                    Q 280 1750 200 1850
+                    L 200 1950", 
+                    fill = "none", stroke = "rgba(5, 179, 5, 1)", "stroke-width" = "1")
+                ),
+                
+                # Roadmap Steps
+                div(class = "roadmap-steps",
+                  # Step 1: Discovery
+                  div(class = "roadmap-step", "data-step" = "1",
+                    div(class = "step-marker",
+                      div(class = "step-icon", icon("search")),
+                      div(class = "step-pulse")
+                    ),
+                    div(class = "step-content",
+                      div(class = "step-number", "01"),
+                      h3("Discovery & Analysis", class = "step-title"),
+                      p("We begin by understanding your business goals, technical requirements, and user needs through comprehensive research and stakeholder interviews.", class = "step-description")
+                    )
                   ),
                   
-                  div(class = "service-features",
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Threat Detection")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Identity Management")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Compliance Auditing")
-                      ),
-                      div(class = "feature-item",
-                          icon("check", class = "feature-icon"),
-                          span("Incident Response")
-                      )
+                  # Step 2: Planning
+                  div(class = "roadmap-step", "data-step" = "2",
+                    div(class = "step-marker",
+                      div(class = "step-icon", icon("project-diagram")),
+                      div(class = "step-pulse")
+                    ),
+                    div(class = "step-content",
+                      div(class = "step-number", "02"),
+                      h3("Planning & Architecture", class = "step-title"),
+                      p("Our team designs the technical architecture, creates detailed project plans, and establishes development milestones with clear deliverables.", class = "step-description")
+                    )
+                  ),
+                  
+                  # Step 3: Development
+                  div(class = "roadmap-step", "data-step" = "3",
+                    div(class = "step-marker",
+                      div(class = "step-icon", icon("code")),
+                      div(class = "step-pulse")
+                    ),
+                    div(class = "step-content",
+                      div(class = "step-number", "03"),
+                      h3("Development & Testing", class = "step-title"),
+                      p("We build your solution using agile methodologies, with continuous testing, code reviews, and regular client feedback sessions.", class = "step-description")
+                    )
+                  ),
+                  
+                  # Step 4: Deployment
+                  div(class = "roadmap-step", "data-step" = "4",
+                    div(class = "step-marker",
+                      div(class = "step-icon", icon("rocket")),
+                      div(class = "step-pulse")
+                    ),
+                    div(class = "step-content",
+                      div(class = "step-number", "04"),
+                      h3("Deployment & Launch", class = "step-title"),
+                      p("We handle the complete deployment process, including server setup, database migration, and go-live support to ensure smooth launch.", class = "step-description")
+                    )
+                  ),
+                  
+                  # Step 5: Support
+                  div(class = "roadmap-step", "data-step" = "5",
+                    div(class = "step-marker",
+                      div(class = "step-icon", icon("headset")),
+                      div(class = "step-pulse")
+                    ),
+                    div(class = "step-content",
+                      div(class = "step-number", "05"),
+                      h3("Support & Maintenance", class = "step-title"),
+                      p("We provide ongoing support, monitoring, updates, and feature enhancements to ensure your solution continues to deliver value.", class = "step-description")
+                    )
                   )
-              ),
-              
-              div(class = "service-footer",
-                  actionButton("learn_security", "Learn More", class = "btn btn-outline")
+                )
               )
             )
-          )
+          ),
+          
         )
       ),
       
@@ -771,971 +935,362 @@ ui <- tagList(
         class = "solutions-section",
         id = "solutions",
         
+        # Solutions Background Elements
+        div(class = "solutions-background"),
+        
+        # Solutions Container
         div(
-          class = "section-container",
+          class = "solutions-container",
           
-          # Section Header
+          # Solutions Header
           div(
-            class = "section-header",
-            `data-aos` = "fade-up",
+            class = "solutions-header",
             
-            div(class = "section-badge", "Our Solutions"),
-            h2(class = "section-title",
-               "Innovative Products ",
-               span("for Africa", class = "title-accent")
+            div(
+              class = "solutions-badge",
+              icon("cubes", class = "badge-icon"),
+              span("Product Suites")
             ),
-            p(class = "section-subtitle",
-              "Purpose-built solutions designed specifically for African markets, addressing unique challenges with cutting-edge technology."
+            
+            h2(
+              class = "solutions-title",
+              "Industry Solutions",
+              tags$br(),
+              "Built for Africa"
+            ),
+            
+            p(
+              class = "solutions-subtitle",
+              "Pre‑built, enterprise‑ready platforms that solve real problems across government, healthcare, education, and finance—secure, scalable, and locally optimized."
             )
           ),
           
-          # Featured Solution
-          div(
-            class = "featured-solution",
-            
-            
-            div(class = "solution-visual",
-                img(src = "assets/solutions/fevaai-preview.png", alt = "FevaAI Platform", class = "solution-image"),
-                div(class = "solution-badge", "AI-Powered")
-            ),
-            
-            div(class = "solution-content",
-                h3(class = "solution-name", "FevaAI"),
-                p(class = "solution-description",
-                  "Revolutionary AI platform that democratizes artificial intelligence for African businesses. No coding required."
-                ),
-                
-                div(class = "solution-features",
-                    div(class = "feature-highlight",
-                        icon("magic", class = "feature-icon"),
-                        span("Auto-ML Models")
-                    ),
-                    div(class = "feature-highlight",
-                        icon("language", class = "feature-icon"),
-                        span("Multi-Language Support")
-                    ),
-                    div(class = "feature-highlight",
-                        icon("chart-line", class = "feature-icon"),
-                        span("Real-time Analytics")
-                    ),
-                    div(class = "feature-highlight",
-                        icon("mobile", class = "feature-icon"),
-                        span("Mobile-First Design")
-                    )
-                ),
-                
-                div(class = "solution-actions",
-                    actionButton("demo_fevaai", "Request Demo", class = "btn btn-primary btn-lg"),
-                    actionButton("learn_fevaai", "Learn More", class = "btn btn-secondary btn-lg")
-                )
-            )
-          ),
-          
-          # Other Solutions Grid
+          # Solutions Grid
           div(
             class = "solutions-grid",
             
-            # FevaChain
-            div(
-              class = "solution-card",
-              
-              
-              div(class = "solution-header",
-                  div(class = "solution-icon", icon("link")),
-                  div(class = "solution-badge", "Blockchain"),
-                  h4(class = "solution-title", "FevaChain")
-              ),
-              
-              div(class = "solution-preview",
-                  img(src = "assets/solutions/fevachain-preview.png", alt = "FevaChain", class = "solution-img")
-              ),
-              
-              p(class = "solution-summary",
-                "Secure blockchain infrastructure for identity verification and digital payments across Africa."
-              ),
-              
-              div(class = "solution-tags",
-                  span("Blockchain", class = "tech-tag"),
-                  span("Smart Contracts", class = "tech-tag"),
-                  span("DeFi", class = "tech-tag")
-              ),
-              
-              actionButton("notify_fevachain", "Coming Soon", class = "btn btn-outline btn-sm")
+            # FevaAI Platform
+            div(class = "solution-card primary-solution",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("robot")),
+                    div(class = "solution-badge", "AI Platform")
+                ),
+                h3("FevaAI Platform"),
+                p("No‑code and pro‑code AI platform for vision, NLP, and predictive analytics with strong MLOps."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("No‑code model builder")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("50+ African languages")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("On‑prem or cloud deployment"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("TensorFlow", class = "tech-tag"),
+                    span("PyTorch", class = "tech-tag"),
+                    span("MLflow", class = "tech-tag"),
+                    span("Kafka", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("demo_fevaai", "View Demo", class = "btn btn-primary"),
+                    actionButton("contact_fevaai", "Get Started", class = "btn btn-outline")
+                )
             ),
             
-            # FevaHealth
-            div(
-              class = "solution-card",
-              
-              
-              div(class = "solution-header",
-                  div(class = "solution-icon", icon("heartbeat")),
-                  div(class = "solution-badge", "HealthTech"),
-                  h4(class = "solution-title", "FevaHealth")
-              ),
-              
-              div(class = "solution-preview",
-                  img(src = "assets/solutions/fevahealth-preview.png", alt = "FevaHealth", class = "solution-img")
-              ),
-              
-              p(class = "solution-summary",
-                "Comprehensive digital health platform connecting patients, providers, and health systems."
-              ),
-              
-              div(class = "solution-tags",
-                  span("Telemedicine", class = "tech-tag"),
-                  span("EMR", class = "tech-tag"),
-                  span("AI Diagnostics", class = "tech-tag")
-              ),
-              
-              actionButton("notify_fevahealth", "Coming Soon", class = "btn btn-outline btn-sm")
+            # FevaChain (Coming Soon)
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("link")),
+                    div(class = "solution-badge", "Blockchain")
+                ),
+                h3("FevaChain"),
+                p("Sovereign blockchain for digital identity, verifiable credentials, and secure payments across borders."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Self‑sovereign identity")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Instant cross‑border settlement")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Smart contracts & compliance"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("Ethereum", class = "tech-tag"),
+                    span("Polygon", class = "tech-tag"),
+                    span("Hyperledger", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("notify_fevachain", "Get Notified", class = "btn btn-secondary"),
+                    actionButton("learn_more_chain", "Learn More", class = "btn btn-outline")
+                )
+            ),
+            
+            # FevaHealth (Coming Soon)
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("hospital")),
+                    div(class = "solution-badge", "HealthTech")
+                ),
+                h3("FevaHealth"),
+                p("Interoperable digital health platform: EMR, telemedicine, e‑pharmacy, and AI triage integrated."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("HL7/FHIR compliant")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Offline‑first clinics")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("AI decision support"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("FHIR", class = "tech-tag"),
+                    span("Keycloak", class = "tech-tag"),
+                    span("PostgreSQL", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("notify_fevahealth", "Get Notified", class = "btn btn-secondary"),
+                    actionButton("learn_more_health", "Learn More", class = "btn btn-outline")
+                )
             ),
             
             # FevaEdu
-            div(
-              class = "solution-card",
-             
-              
-              div(class = "solution-header",
-                  div(class = "solution-icon", icon("graduation-cap")),
-                  div(class = "solution-badge", "EdTech"),
-                  h4(class = "solution-title", "FevaEdu")
-              ),
-              
-              div(class = "solution-preview",
-                  img(src = "assets/solutions/fevaedu-preview.png", alt = "FevaEdu", class = "solution-img")
-              ),
-              
-              p(class = "solution-summary",
-                "AI-powered learning platform that personalizes education for African students and institutions."
-              ),
-              
-              div(class = "solution-tags",
-                  span("Adaptive Learning", class = "tech-tag"),
-                  span("VR/AR", class = "tech-tag"),
-                  span("Analytics", class = "tech-tag")
-              ),
-              
-              actionButton("notify_fevaedu", "Coming Soon", class = "btn btn-outline btn-sm")
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("graduation-cap")),
+                    div(class = "solution-badge", "EdTech")
+                ),
+                h3("FevaEdu"),
+                p("Learning platform with adaptive AI, assessments, and offline‑capable classrooms for schools and universities."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Adaptive learning")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Analytics & reporting")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Multi‑tenant SaaS"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("React", class = "tech-tag"),
+                    span("Node.js", class = "tech-tag"),
+                    span("Redis", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("contact_fevaedu", "Request Demo", class = "btn btn-primary"),
+                    actionButton("learn_more_edu", "Learn More", class = "btn btn-outline")
+                )
             ),
             
             # FevaFinance
-            div(
-              class = "solution-card",
-              
-              
-              div(class = "solution-header",
-                  div(class = "solution-icon", icon("coins")),
-                  div(class = "solution-badge", "FinTech"),
-                  h4(class = "solution-title", "FevaFinance")
-              ),
-              
-              div(class = "solution-preview",
-                  img(src = "assets/solutions/fevafinance-preview.png", alt = "FevaFinance", class = "solution-img")
-              ),
-              
-              p(class = "solution-summary",
-                "Digital banking and financial inclusion platform designed for emerging markets."
-              ),
-              
-              div(class = "solution-tags",
-                  span("Mobile Banking", class = "tech-tag"),
-                  span("Microfinance", class = "tech-tag"),
-                  span("Credit Scoring", class = "tech-tag")
-              ),
-              
-              actionButton("notify_fevafinance", "Coming Soon", class = "btn btn-outline btn-sm")
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("landmark")),
+                    div(class = "solution-badge", "FinTech")
+                ),
+                h3("FevaFinance"),
+                p("Core digital finance stack for banks, MFIs, and fintechs—KYC, lending, compliance, and analytics."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("KYC/AML workflows")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Loan origination & scoring")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Open banking APIs"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("Keycloak", class = "tech-tag"),
+                    span("Kubernetes", class = "tech-tag"),
+                    span("Elastic", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("contact_fevafinance", "Request Demo", class = "btn btn-primary"),
+                    actionButton("learn_more_finance", "Learn More", class = "btn btn-outline")
+                )
             )
-          )
+          ),
+          
         )
       ),
-      
-      # ===== PORTFOLIO SECTION =====
-      tags$section(
-        class = "portfolio-section",
-        id = "portfolio",
+  
+  # ===== PORTFOLIO SECTION =====
+  tags$section(
+    class = "portfolio-section",
+    id = "portfolio",
+    
+    div(class = "portfolio-background"),
+    
+    div(class = "portfolio-container",
+        div(class = "portfolio-header",
+            div(class = "portfolio-badge", icon("briefcase", class = "badge-icon"), span("Case Studies")),
+            h2(class = "portfolio-title", "Proven Impact", tags$br(), "Across Industries"),
+            p(class = "portfolio-subtitle", "A selection of outcome‑driven projects delivered with reliability, scale, and security.")
+        ),
         
-        div(
-          class = "section-container",
-          
-          # Section Header
-          div(
-            class = "section-header",
-            `data-aos` = "fade-up",
-            
-            div(class = "section-badge", "Our Portfolio"),
-            h2(class = "section-title",
-               "Transformative ",
-               span("Success Stories", class = "title-accent")
-            ),
-            p(class = "section-subtitle",
-              "Real impact, real results. Discover how we've helped organizations across Africa achieve digital transformation and drive sustainable growth."
-            )
-          ),
-          
-          # Portfolio Filters
-          div(
-            class = "portfolio-filters",
-            
-            
-            div(class = "filter-tabs",
-                actionButton("filter_all", "All Projects", class = "filter-tab active", `data-filter` = "all"),
-                actionButton("filter_government", "Government", class = "filter-tab", `data-filter` = "government"),
-                actionButton("filter_healthcare", "Healthcare", class = "filter-tab", `data-filter` = "healthcare"),
-                actionButton("filter_education", "Education", class = "filter-tab", `data-filter` = "education"),
-                actionButton("filter_fintech", "FinTech", class = "filter-tab", `data-filter` = "fintech"),
-                actionButton("filter_enterprise", "Enterprise", class = "filter-tab", `data-filter` = "enterprise")
-            )
-          ),
-          
-          # Featured Project
-          div(
-            class = "featured-project",
-          
-            
-            div(class = "project-visual",
-                img(src = "assets/portfolio/featured-project.png", alt = "Rwanda Digital ID Platform", class = "project-image"),
-                
-                div(class = "project-metrics",
-                    div(class = "metric-item",
-                        span("2M+", class = "metric-number"),
-                        span("Users Served", class = "metric-label")
+        # Filters
+        div(class = "portfolio-filters",
+            actionButton("filter_all", "All", class = "btn btn-secondary active"),
+            actionButton("filter_government", "Government", class = "btn btn-outline"),
+            actionButton("filter_healthcare", "Healthcare", class = "btn btn-outline"),
+            actionButton("filter_education", "Education", class = "btn btn-outline"),
+            actionButton("filter_fintech", "Finance", class = "btn btn-outline"),
+            actionButton("filter_enterprise", "Enterprise", class = "btn btn-outline")
+        ),
+        
+        # Portfolio Grid
+        div(class = "portfolio-grid",
+            div(class = "portfolio-card government",
+                div(class = "card-media",
+                    img(src = "image1.jpg", alt = "Digital ID Platform", class = "card-image"),
+                    div(class = "media-overlay", span("Government"))
+                ),
+                div(class = "card-body",
+                    h3("Rwanda Digital ID Platform"),
+                    p("Nationwide digital identity with biometric security and fraud detection."),
+                    div(class = "card-meta",
+                        span("2M+ Users", class = "meta-tag"),
+                        span("95% Fraud Reduction", class = "meta-tag")
                     ),
-                    div(class = "metric-item",
-                        span("50%", class = "metric-number"),
-                        span("Cost Reduction", class = "metric-label")
+                    actionButton("view_case_study", "View Case Study", class = "btn btn-primary")
+                )
+            ),
+            
+            div(class = "portfolio-card healthcare",
+                div(class = "card-media",
+                    img(src = "image2.jpg", alt = "Telemedicine Network", class = "card-image"),
+                    div(class = "media-overlay", span("Healthcare"))
+                ),
+                div(class = "card-body",
+                    h3("Regional Telemedicine Network"),
+                    p("Connected clinics with AI triage and offline‑first EMR syncing."),
+                    div(class = "card-meta",
+                        span("120+ Clinics", class = "meta-tag"),
+                        span("< 200ms Latency", class = "meta-tag")
                     ),
-                    div(class = "metric-item",
-                        span("24/7", class = "metric-number"),
-                        span("Uptime", class = "metric-label")
-                    )
+                    actionButton("view_case_study_health", "View Case Study", class = "btn btn-outline")
                 )
             ),
             
-            div(class = "project-details",
-                div(class = "project-tags",
-                    span("Government", class = "project-tag government"),
-                    span("AI-Powered", class = "project-tag ai"),
-                    span("Award Winner", class = "project-tag award")
+            div(class = "portfolio-card fintech",
+                div(class = "card-media",
+                    img(src = "image3.jpg", alt = "Open Banking APIs", class = "card-image"),
+                    div(class = "media-overlay", span("Finance"))
                 ),
-                
-                h3(class = "project-title", "Rwanda Digital ID Platform"),
-                
-                p(class = "project-description",
-                  "Revolutionary digital identity system serving 2M+ Rwandan citizens with biometric authentication, blockchain security, and AI-powered fraud detection."
-                ),
-                
-                div(class = "tech-stack",
-                    h4("Technology Stack"),
-                    div(class = "tech-grid",
-                        div(class = "tech-item",
-                            icon("react", class = "tech-icon"),
-                            span("React")
-                        ),
-                        div(class = "tech-item",
-                            icon("node-js", class = "tech-icon"),
-                            span("Node.js")
-                        ),
-                        div(class = "tech-item",
-                            icon("database", class = "tech-icon"),
-                            span("PostgreSQL")
-                        ),
-                        div(class = "tech-item",
-                            icon("cloud", class = "tech-icon"),
-                            span("AWS")
-                        ),
-                        div(class = "tech-item",
-                            icon("brain", class = "tech-icon"),
-                            span("AI/ML")
-                        ),
-                        div(class = "tech-item",
-                            icon("shield", class = "tech-icon"),
-                            span("Blockchain")
-                        )
-                    )
-                ),
-                
-                div(class = "achievements",
-                    h4("Key Achievements"),
-                    div(class = "achievement-list",
-                        div(class = "achievement-item",
-                            icon("check-circle", class = "achievement-icon"),
-                            span("99.9% system uptime achieved")
-                        ),
-                        div(class = "achievement-item",
-                            icon("check-circle", class = "achievement-icon"),
-                            span("Eliminated 95% of identity fraud")
-                        ),
-                        div(class = "achievement-item",
-                            icon("check-circle", class = "achievement-icon"),
-                            span("Reduced processing time by 90%")
-                        ),
-                        div(class = "achievement-item",
-                            icon("check-circle", class = "achievement-icon"),
-                            span("Saved $5M in operational costs")
-                        )
-                    )
-                ),
-                
-                div(class = "project-actions",
-                    actionButton("view_case_study", "View Case Study", class = "btn btn-primary btn-lg"),
-                    actionButton("live_demo", "Live Demo", class = "btn btn-secondary btn-lg")
+                div(class = "card-body",
+                    h3("Open Banking Initiative"),
+                    p("API gateway enabling secure integrations with banks and fintech partners."),
+                    div(class = "card-meta",
+                        span("PSDs2 Ready", class = "meta-tag"),
+                        span("5M+ tx/mo", class = "meta-tag")
+                    ),
+                    actionButton("view_case_study_fin", "View Case Study", class = "btn btn-outline")
                 )
             )
-          ),
-          
-          # Portfolio Grid
-          div(
-            class = "portfolio-grid",
-            
-            
-            # Healthcare Project
-            div(
-              class = "portfolio-card healthcare",
-              `data-category` = "healthcare",
-              
-              div(class = "card-image",
-                  img(src = "assets/portfolio/healthcare-project.png", alt = "Smart Hospital Management", class = "project-img"),
-                  div(class = "card-overlay",
-                      div(class = "overlay-content",
-                          h4("Smart Hospital Management System"),
-                          p("AI-powered hospital operations platform"),
-                          div(class = "overlay-stats",
-                              span("50K+ patients", class = "overlay-stat"),
-                              span("40% efficiency boost", class = "overlay-stat")
-                          )
-                      )
-                  )
-              ),
-              
-              div(class = "card-content",
-                  div(class = "project-meta",
-                      span("Healthcare", class = "category-badge healthcare"),
-                      span("2024", class = "year-badge")
-                  ),
-                  
-                  h4("King Faisal Hospital Platform"),
-                  
-                  p("Comprehensive digital transformation of hospital operations, from patient management to AI-assisted diagnostics."),
-                  
-                  div(class = "impact-metrics",
-                      div(class = "metric-item",
-                          icon("users", class = "metric-icon"),
-                          span("50K+ patients served")
-                      ),
-                      div(class = "metric-item",
-                          icon("clock", class = "metric-icon"),
-                          span("40% faster processing")
-                      )
-                  ),
-                  
-                  actionButton("view_healthcare", "View Project", class = "btn btn-outline btn-sm")
-              )
-            ),
-            
-            # Education Project
-            div(
-              class = "portfolio-card education",
-              `data-category` = "education",
-              
-              div(class = "card-image",
-                  img(src = "assets/portfolio/education-project.png", alt = "Smart Education Platform", class = "project-img"),
-                  div(class = "card-overlay",
-                      div(class = "overlay-content",
-                          h4("National Education Management"),
-                          p("AI-powered learning ecosystem"),
-                          div(class = "overlay-stats",
-                              span("200+ schools", class = "overlay-stat"),
-                              span("100K+ students", class = "overlay-stat")
-                          )
-                      )
-                  )
-              ),
-              
-              div(class = "card-content",
-                  div(class = "project-meta",
-                      span("Education", class = "category-badge education"),
-                      span("2024", class = "year-badge")
-                  ),
-                  
-                  h4("Smart Education Platform"),
-                  
-                  p("Transforming education delivery with personalized learning paths, real-time analytics, and AI-powered assessment tools."),
-                  
-                  div(class = "impact-metrics",
-                      div(class = "metric-item",
-                          icon("school", class = "metric-icon"),
-                          span("200+ schools connected")
-                      ),
-                      div(class = "metric-item",
-                          icon("chart-line", class = "metric-icon"),
-                          span("25% improved scores")
-                      )
-                  ),
-                  
-                  actionButton("view_education", "View Project", class = "btn btn-outline btn-sm")
-              )
-            ),
-            
-            # FinTech Project
-            div(
-              class = "portfolio-card fintech",
-              `data-category` = "fintech",
-              
-              div(class = "card-image",
-                  img(src = "assets/portfolio/fintech-project.png", alt = "Digital Banking Platform", class = "project-img"),
-                  div(class = "card-overlay",
-                      div(class = "overlay-content",
-                          h4("Digital Banking Platform"),
-                          p("Next-gen financial services"),
-                          div(class = "overlay-stats",
-                              span("1M+ users", class = "overlay-stat"),
-                              span("$100M+ processed", class = "overlay-stat")
-                          )
-                      )
-                  )
-              ),
-              
-              div(class = "card-content",
-                  div(class = "project-meta",
-                      span("FinTech", class = "category-badge fintech"),
-                      span("2023", class = "year-badge")
-                  ),
-                  
-                  h4("Mobile Banking Revolution"),
-                  
-                  p("Comprehensive digital banking platform with AI-powered fraud detection, microfinance, and financial inclusion features."),
-                  
-                  div(class = "impact-metrics",
-                      div(class = "metric-item",
-                          icon("users", class = "metric-icon"),
-                          span("1M+ active users")
-                      ),
-                      div(class = "metric-item",
-                          icon("dollar-sign", class = "metric-icon"),
-                          span("$100M+ processed")
-                      )
-                  ),
-                  
-                  actionButton("view_fintech", "View Project", class = "btn btn-outline btn-sm")
-              )
-            ),
-            
-            # Enterprise Project
-            div(
-              class = "portfolio-card enterprise",
-              `data-category` = "enterprise",
-              
-              div(class = "card-image",
-                  img(src = "assets/portfolio/enterprise-project.png", alt = "Smart City Platform", class = "project-img"),
-                  div(class = "card-overlay",
-                      div(class = "overlay-content",
-                          h4("Smart City Operations"),
-                          p("IoT-powered city management"),
-                          div(class = "overlay-stats",
-                              span("10K+ sensors", class = "overlay-stat"),
-                              span("30% efficiency gain", class = "overlay-stat")
-                          )
-                      )
-                  )
-              ),
-              
-              div(class = "card-content",
-                  div(class = "project-meta",
-                      span("Enterprise", class = "category-badge enterprise"),
-                      span("2024", class = "year-badge")
-                  ),
-                  
-                  h4("Kigali Smart City Platform"),
-                  
-                  p("Integrated IoT and AI platform for city-wide operations, traffic management, and predictive maintenance."),
-                  
-                  div(class = "impact-metrics",
-                      div(class = "metric-item",
-                          icon("city", class = "metric-icon"),
-                          span("City-wide coverage")
-                      ),
-                      div(class = "metric-item",
-                          icon("bolt", class = "metric-icon"),
-                          span("30% efficiency gain")
-                      )
-                  ),
-                  
-                  actionButton("view_enterprise", "View Project", class = "btn btn-outline btn-sm")
-              )
-            )
-          ),
-          
-          # Client Testimonials
-          div(
-            class = "testimonials-section",
-            
-            
-            h3(class = "testimonials-title", "What Our Clients Say"),
-            
-            div(class = "testimonials-carousel",
-                div(class = "testimonial-card active",
-                    div(class = "testimonial-content",
-                        div(class = "quote-icon", icon("quote-left")),
-                        p("Feva transformed our entire healthcare system. The AI-powered diagnostics have improved patient outcomes by 40% while reducing costs significantly."),
-                        
-                        div(class = "testimonial-author",
-                            img(src = "assets/testimonials/author-1.jpg", alt = "Dr. Sarah Uwimana", class = "author-avatar"),
-                            div(class = "author-info",
-                                span("Dr. Sarah Uwimana", class = "author-name"),
-                                span("CTO, King Faisal Hospital", class = "author-title"),
-                                div(class = "author-rating",
-                                    icon("star"), icon("star"), icon("star"), icon("star"), icon("star")
-                                )
-                            )
-                        )
-                    )
-                ),
-                
-                div(class = "testimonial-card",
-                    div(class = "testimonial-content",
-                        div(class = "quote-icon", icon("quote-left")),
-                        p("The digital ID system has revolutionized how we serve citizens. Processing time went from hours to seconds, and fraud is virtually eliminated."),
-                        
-                        div(class = "testimonial-author",
-                            img(src = "assets/testimonials/author-2.jpg", alt = "Jean Claude Nzeyimana", class = "author-avatar"),
-                            div(class = "author-info",
-                                span("Jean Claude Nzeyimana", class = "author-name"),
-                                span("Director, NISR", class = "author-title"),
-                                div(class = "author-rating",
-                                    icon("star"), icon("star"), icon("star"), icon("star"), icon("star")
-                                )
-                            )
-                        )
-                    )
-                )
-            ),
-            
-            div(class = "testimonial-controls",
-                div(class = "testimonial-dots",
-                    div(class = "dot active"),
-                    div(class = "dot"),
-                    div(class = "dot")
-                )
-            )
-          )
         )
-      ),
-      
-      # ===== TEAM SECTION =====
-      tags$section(
-        class = "team-section",
-        id = "team",
+    )
+  ),
+  
+  # ===== TEAM SECTION =====
+  tags$section(
+    class = "team-section",
+    id = "team",
+    
+    div(class = "team-background"),
+    
+    div(class = "team-container",
+        div(class = "team-header",
+            div(class = "team-badge", icon("users", class = "badge-icon"), span("Leadership")),
+            h2(class = "team-title", "People Who Build", tags$br(), "Reliable Technology"),
+            p(class = "team-subtitle", "Experienced engineers, designers, and product leaders with a track record of delivery.")
+        ),
         
-        div(
-          class = "section-container",
-          
-          # Section Header
-          div(
-            class = "section-header",
-            `data-aos` = "fade-up",
-            
-            div(class = "section-badge", "Our Team"),
-            h2(class = "section-title",
-               "Meet the Visionaries ",
-               span("Behind Innovation", class = "title-accent")
+        div(class = "team-grid",
+            div(class = "member-card",
+                div(class = "member-avatar placeholder", icon("user-tie")),
+                h3("A. N. Executive"),
+                span("Chief Executive Officer", class = "member-role"),
+                div(class = "member-tags",
+                    span("Strategy", class = "tag"), span("Partnerships", class = "tag"), span("Growth", class = "tag")
+                )
             ),
-            p(class = "section-subtitle",
-              "A diverse team of world-class engineers, designers, and strategists united by our mission to transform Africa through technology."
+            div(class = "member-card",
+                div(class = "member-avatar placeholder", icon("microchip")),
+                h3("B. T. Engineer"),
+                span("Chief Technology Officer", class = "member-role"),
+                div(class = "member-tags",
+                    span("Architecture", class = "tag"), span("Security", class = "tag"), span("Scale", class = "tag")
+                )
+            ),
+            div(class = "member-card",
+                div(class = "member-avatar placeholder", icon("paint-brush")),
+                h3("C. U. Designer"),
+                span("Head of Design", class = "member-role"),
+                div(class = "member-tags",
+                    span("Design Systems", class = "tag"), span("UX", class = "tag"), span("Accessibility", class = "tag")
+                )
+            ),
+            div(class = "member-card",
+                div(class = "member-avatar placeholder", icon("shield-alt")),
+                h3("D. V. SecOps"),
+                span("Head of Security", class = "member-role"),
+                div(class = "member-tags",
+                    span("Compliance", class = "tag"), span("IAM", class = "tag"), span("DevSecOps", class = "tag")
+                )
             )
-          ),
-          
-          # Leadership Team
-          div(
-            class = "leadership-grid",
-           
-            
-            # CEO
-            div(
-              class = "team-card ceo-card",
-              
-              div(class = "team-image-container",
-                  img(src = "assets/team/ceo.jpg", alt = "CEO", class = "team-image"),
-                  div(class = "team-overlay",
-                      div(class = "social-links",
-                          a(href = "#", icon("linkedin"), class = "social-link"),
-                          a(href = "#", icon("twitter"), class = "social-link"),
-                          a(href = "#", icon("github"), class = "social-link")
-                      )
-                  )
-              ),
-              
-              div(class = "team-content",
-                  h4(class = "team-name", "Dr. Amina Kwame"),
-                  p(class = "team-role", "Chief Executive Officer"),
-                  p(class = "team-bio",
-                    "Visionary leader with 15+ years in AI and digital transformation. Former Google AI researcher and MIT graduate."
-                  ),
-                  
-                  div(class = "team-expertise",
-                      span("AI Strategy", class = "expertise-tag"),
-                      span("Digital Transformation", class = "expertise-tag"),
-                      span("Leadership", class = "expertise-tag")
-                  )
-              )
-            ),
-            
-            # CTO
-            div(
-              class = "team-card cto-card",
-              
-              div(class = "team-image-container",
-                  img(src = "assets/team/cto.jpg", alt = "CTO", class = "team-image"),
-                  div(class = "team-overlay",
-                      div(class = "social-links",
-                          a(href = "#", icon("linkedin"), class = "social-link"),
-                          a(href = "#", icon("twitter"), class = "social-link"),
-                          a(href = "#", icon("github"), class = "social-link")
-                      )
-                  )
-              ),
-              
-              div(class = "team-content",
-                  h4(class = "team-name", "Samuel Ntare"),
-                  p(class = "team-role", "Chief Technology Officer"),
-                  p(class = "team-bio",
-                    "Blockchain pioneer and cloud architecture expert. Previously led engineering teams at Microsoft and Amazon."
-                  ),
-                  
-                  div(class = "team-expertise",
-                      span("Blockchain", class = "expertise-tag"),
-                      span("Cloud Architecture", class = "expertise-tag"),
-                      span("Engineering", class = "expertise-tag")
-                  )
-              )
-            ),
-            
-            # CPO
-            div(
-              class = "team-card cpo-card",
-              
-              div(class = "team-image-container",
-                  img(src = "assets/team/cpo.jpg", alt = "CPO", class = "team-image"),
-                  div(class = "team-overlay",
-                      div(class = "social-links",
-                          a(href = "#", icon("linkedin"), class = "social-link"),
-                          a(href = "#", icon("twitter"), class = "social-link"),
-                          a(href = "#", icon("dribbble"), class = "social-link")
-                      )
-                  )
-              ),
-              
-              div(class = "team-content",
-                  h4(class = "team-name", "Grace Mbabazi"),
-                  p(class = "team-role", "Chief Product Officer"),
-                  p(class = "team-bio",
-                    "Design thinking expert with passion for user-centered innovation. Former Apple and IDEO design lead."
-                  ),
-                  
-                  div(class = "team-expertise",
-                      span("Product Strategy", class = "expertise-tag"),
-                      span("UX Design", class = "expertise-tag"),
-                      span("Innovation", class = "expertise-tag")
-                  )
-              )
-            )
-          ),
-          
-          # Team Stats
-          div(
-            class = "team-stats",
-            
-            
-            div(class = "stat-item",
-                div(class = "stat-number", "50+"),
-                div(class = "stat-label", "Team Members")
-            ),
-            div(class = "stat-item",
-                div(class = "stat-number", "15+"),
-                div(class = "stat-label", "Countries")
-            ),
-            div(class = "stat-item",
-                div(class = "stat-number", "10+"),
-                div(class = "stat-label", "Years Experience")
-            ),
-            div(class = "stat-item",
-                div(class = "stat-number", "25+"),
-                div(class = "stat-label", "Certifications")
-            )
-          ),
-          
-          # Join Team CTA
-          div(
-            class = "join-team-cta",
-            
-            
-            h3("Join Our Mission"),
-            p("Ready to shape Africa's digital future? We're looking for passionate individuals who share our vision."),
-            
-            div(class = "cta-actions",
-                actionButton("view_careers", "View Open Positions", class = "btn btn-primary btn-lg"),
-                actionButton("culture_guide", "Culture Guide", class = "btn btn-secondary btn-lg")
-            )
-          )
         )
-      ),
-      
-      # ===== CONTACT SECTION =====
-      tags$section(
-        class = "contact-section",
-        id = "contact",
+    )
+  ),
+  
+  # ===== CONTACT SECTION =====
+  tags$section(
+    class = "contact-section",
+    id = "contact",
+    
+    div(class = "contact-background"),
+    
+    div(class = "contact-container",
+        div(class = "contact-header",
+            div(class = "contact-badge", icon("envelope", class = "badge-icon"), span("Contact Us")),
+            h2(class = "contact-title", "Tell Us About", tags$br(), "Your Project"),
+            p(class = "contact-subtitle", "We respond within 24 hours. Your information is kept confidential and secure.")
+        ),
         
-        div(
-          class = "section-container",
-          
-          # Section Header
-          div(
-            class = "section-header",
-            `data-aos` = "fade-up",
-            
-            div(class = "section-badge", "Get In Touch"),
-            h2(class = "section-title",
-               "Let's Build Something ",
-               span("Amazing Together", class = "title-accent")
-            ),
-            p(class = "section-subtitle",
-              "Ready to transform your business with intelligent technology? Our team is here to discuss your project and explore how we can help you achieve your goals."
-            )
-          ),
-          
-          # Contact Content
-          div(
-            class = "contact-content",
-            
-            # Contact Info
-            div(
-              class = "contact-info",
-              
-              
-              div(class = "contact-methods",
-                  div(class = "contact-method",
-                      div(class = "method-icon", icon("envelope")),
-                      div(class = "method-content",
-                          h4("Email Us"),
-                          p("hello@feva.africa"),
-                          actionButton("email_contact", "Send Email", class = "btn btn-outline btn-sm")
-                      )
-                  ),
-                  
-                  div(class = "contact-method",
-                      div(class = "method-icon", icon("phone")),
-                      div(class = "method-content",
-                          h4("Call Us"),
-                          p("+250 788 123 456"),
-                          actionButton("phone_contact", "Call Now", class = "btn btn-outline btn-sm")
-                      )
-                  ),
-                  
-                  div(class = "contact-method",
-                      div(class = "method-icon", icon("map-marker-alt")),
-                      div(class = "method-content",
-                          h4("Visit Us"),
-                          p("Kigali Innovation City, Rwanda"),
-                          actionButton("office_visit", "Get Directions", class = "btn btn-outline btn-sm")
-                      )
-                  ),
-                  
-                  div(class = "contact-method",
-                      div(class = "method-icon", icon("calendar")),
-                      div(class = "method-content",
-                          h4("Schedule Meeting"),
-                          p("Book a consultation"),
-                          actionButton("schedule_meeting", "Book Now", class = "btn btn-outline btn-sm")
-                      )
-                  )
-              ),
-              
-              # Social Links
-              div(class = "social-section",
-                  h4("Follow Us"),
-                  div(class = "social-links",
-                      a(href = "#", icon("linkedin"), class = "social-link"),
-                      a(href = "#", icon("twitter"), class = "social-link"),
-                      a(href = "#", icon("github"), class = "social-link"),
-                      a(href = "#", icon("youtube"), class = "social-link"),
-                      a(href = "#", icon("instagram"), class = "social-link")
-                  )
-              )
-            ),
-            
-            # Contact Form
-            div(
-              class = "contact-form-container",
-              
-              
-              div(class = "form-header",
-                  h3("Start Your Project"),
-                  p("Tell us about your vision and we'll get back to you within 24 hours.")
-              ),
-              
-              # Multi-step Form
-              div(class = "contact-form",
-                  
-                  # Step 1: Basic Information
-                  div(class = "form-step active", id = "step-1",
-                      div(class = "step-header",
-                          h4("Step 1: Basic Information"),
-                          div(class = "step-progress",
-                              div(class = "progress-bar", style = "width: 33%")
-                          )
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Full Name *", `for` = "contact_name"),
-                          textInput("contact_name", label = " ",placeholder = "Enter your full name", value = "")
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Email Address *", `for` = "contact_email"),
-                          textInput("contact_email", label = " ",placeholder = "Enter your email address", value = "")
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Company/Organization", `for` = "contact_company"),
-                          textInput("contact_company", label = " ",placeholder = "Enter your company name", value = "")
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Phone Number", `for` = "contact_phone"),
-                          textInput("contact_phone", label = " ", placeholder = "Enter your phone number", value = "")
-                      ),
-                      
-                      div(class = "form-actions",
-                          actionButton("next_step_1", "Next Step", class = "btn btn-primary")
-                      )
-                  ),
-                  
-                  # Step 2: Project Details
-                  div(class = "form-step", id = "step-2",
-                      div(class = "step-header",
-                          h4("Step 2: Project Details"),
-                          div(class = "step-progress",
-                              div(class = "progress-bar", style = "width: 66%")
-                          )
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Project Type", `for` = "project_type"),
-                          selectInput("project_type",label = " ", choices = list(
-                            "Select project type" = "",
-                            "AI & Machine Learning" = "ai_ml",
-                            "Blockchain Solutions" = "blockchain",
-                            "Mobile App Development" = "mobile",
-                            "Web Application" = "web",
-                            "Data Analytics" = "data",
-                            "Cloud Infrastructure" = "cloud",
-                            "Digital Transformation" = "transformation",
-                            "Custom Solution" = "custom"
-                          ), selected = "")
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Budget Range", `for` = "project_budget"),
-                          selectInput("project_budget", label = " ",choices = list(
-                            "Select budget range" = "",
-                            "Under $10,000" = "under_10k",
-                            "$10,000 - $50,000" = "10k_50k",
-                            "$50,000 - $100,000" = "50k_100k",
-                            "$100,000 - $500,000" = "100k_500k",
-                            "Over $500,000" = "over_500k"
-                          ), selected = "")
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Timeline", `for` = "project_timeline"),
-                          selectInput("project_timeline", label = " ",choices = list(
-                            "Select timeline" = "",
-                            "ASAP" = "asap",
-                            "Within 1 month" = "1_month",
-                            "1-3 months" = "1_3_months",
-                            "3-6 months" = "3_6_months",
-                            "6+ months" = "6_plus_months"
-                          ), selected = "")
-                      ),
-                      
-                      div(class = "form-actions",
-                          actionButton("prev_step_2", "Previous", class = "btn btn-secondary"),
-                          actionButton("next_step_2", "Next Step", class = "btn btn-primary")
-                      )
-                  ),
-                  
-                  # Step 3: Project Description
-                  div(class = "form-step", id = "step-3",
-                      div(class = "step-header",
-                          h4("Step 3: Tell Us More"),
-                          div(class = "step-progress",
-                              div(class = "progress-bar", style = "width: 100%")
-                          )
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("Project Description *", `for` = "project_description"),
-                          textAreaInput("project_description", label = " ",
-                                        placeholder = "Describe your project, goals, and any specific requirements...", 
-                                        value = "", 
-                                        rows = 5)
-                      ),
-                      
-                      div(class = "form-group",
-                          tags$label("How did you hear about us?", `for` = "referral_source"),
-                          selectInput("referral_source", label = " ",choices = list(
-                            "Select source" = "",
-                            "Google Search" = "google",
-                            "Social Media" = "social",
-                            "Referral" = "referral",
-                            "Conference/Event" = "event",
-                            "Partner Network" = "partner",
-                            "Other" = "other"
-                          ), selected = "")
-                      ),
-                      
-                      div(class = "form-group checkbox-group",
-                          checkboxInput("newsletter_signup", "Subscribe to our newsletter for technology insights", value = FALSE),
-                          checkboxInput("terms_agreement", "I agree to the Terms of Service and Privacy Policy *", value = FALSE)
-                      ),
-                      
-                      div(class = "form-actions",
-                          actionButton("prev_step_3", "Previous", class = "btn btn-secondary"),
-                          actionButton("submit_project", "Submit Project", class = "btn btn-primary btn-lg")
-                      )
-                  )
-              )
-            )
-          ),
-          
-          # Office Map
-          div(
-            class = "office-map",
-           
-            
-            h3("Our Office"),
-            
-            div(class = "map-container",
-                # Placeholder for interactive map
-                div(class = "map-placeholder",
-                    img(src = "assets/office-map.png", alt = "Feva Office Location", class = "map-image")
+        div(class = "contact-content",
+            div(class = "contact-card form-card",
+                div(class = "form-row",
+                    textInput("contact_name", label = "Full Name", value = ""),
+                    textInput("contact_email", label = "Work Email", value = "")
+                ),
+                div(class = "form-row",
+                    textInput("contact_company", label = "Company / Organization", value = ""),
+                    selectInput("contact_industry", label = "Industry", choices = c("Government","Healthcare","Education","Finance","Enterprise","Other"))
+                ),
+                div(class = "form-row",
+                    selectInput("contact_budget", label = "Estimated Budget", choices = c("< $10k","$10k - $50k","$50k - $200k","$200k+")),
+                    selectInput("contact_timeline", label = "Timeline", choices = c("ASAP","1-3 months","3-6 months","6+ months"))
+                ),
+                textAreaInput("project_description", label = "Project Description", value = "", rows = 4, placeholder = "What are you trying to build? Key goals, constraints, integrations, users..."),
+                div(class = "form-actions",
+                    actionButton("submit_project", "Submit Project", class = "btn btn-primary"),
+                    actionButton("schedule_meeting", "Schedule a Meeting", class = "btn btn-secondary")
                 )
             ),
             
-            div(class = "office-details",
-                h4("Kigali Innovation City"),
-                p("Located in the heart of Rwanda's tech hub, our office is designed to foster innovation and collaboration."),
-                
-                div(class = "office-hours",
-                    h5("Office Hours"),
-                    p("Monday - Friday: 8:00 AM - 6:00 PM"),
-                    p("Saturday: 9:00 AM - 2:00 PM"),
-                    p("Sunday: Closed")
+            div(class = "contact-card info-card",
+                h3("How to Reach Us"),
+                div(class = "info-list",
+                    div(class = "info-item", icon("envelope"), span("hello@feva.africa")),
+                    div(class = "info-item", icon("phone"), span("+250 788 123 456")),
+                    div(class = "info-item", icon("map-marker-alt"), span("Kigali Innovation City, Rwanda"))
+                ),
+                h3("Why Work With Us"),
+                div(class = "value-list",
+                    div(class = "value-item", icon("check-circle"), span("Enterprise security & compliance")),
+                    div(class = "value-item", icon("check-circle"), span("Scalable cloud architecture")),
+                    div(class = "value-item", icon("check-circle"), span("Local expertise across Africa"))
                 )
             )
-          )
         )
-      )
+    )
+  ),
+      
+      
     ),
     
     # ===== FOOTER =====
@@ -1872,22 +1427,7 @@ ui <- tagList(
     )
   ),
   
-  # ===== FLOATING ELEMENTS =====
-  
-  # Floating Action Button
-  div(
-    class = "floating-action-btn",
-    id = "floating-action-btn",
-    icon("comments"),
-    div(class = "fab-tooltip", "Chat with us")
-  ),
-  
-  # Back to Top Button
-  div(
-    class = "back-to-top",
-    id = "back-to-top",
-    icon("arrow-up")
-  )
+  # ===== END OF CONTACT SECTION =====
   
  
 )
@@ -1932,52 +1472,13 @@ server <- function(input, output, session) {
   
   # ===== HERO SECTION HANDLERS =====
   
+  
+  
   observeEvent(input$hero_explore, {
     runjs("smoothScrollTo('#services');")
     runjs("animateServiceCards();")
   })
   
-  observeEvent(input$hero_demo, {
-    showModal(
-      modalDialog(
-        title = "Feva Technology Demo",
-        size = "l",
-        easyClose = TRUE,
-        
-        div(class = "demo-modal-content",
-            div(class = "video-container",
-                # Placeholder for demo video
-                div(class = "video-placeholder",
-                    img(src = "assets/demo-video-thumbnail.jpg", alt = "Demo Video", class = "video-thumbnail"),
-                    div(class = "play-button", icon("play"))
-                )
-            ),
-            
-            div(class = "demo-description",
-                h3("See Feva in Action"),
-                p("Watch how our AI-powered solutions are transforming businesses across Africa."),
-                
-                div(class = "demo-highlights",
-                    div(class = "highlight-item",
-                        icon("check"), "Real-time AI processing"
-                    ),
-                    div(class = "highlight-item",
-                        icon("check"), "Seamless integration"
-                    ),
-                    div(class = "highlight-item",
-                        icon("check"), "Scalable infrastructure"
-                    )
-                )
-            )
-        ),
-        
-        footer = div(
-          actionButton("schedule_demo", "Schedule Live Demo", class = "btn btn-primary"),
-          actionButton("close_demo_modal", "Close", class = "btn btn-secondary")
-        )
-      )
-    )
-  })
   
   # ===== SERVICE SECTION HANDLERS =====
   
@@ -2364,16 +1865,6 @@ server <- function(input, output, session) {
     runjs("window.open('https://calendly.com/feva-team/consultation', '_blank');")
   })
   
-  # Floating action button (chat)
-  observeEvent(input$floating_action_btn, {
-    showNotification("Chat feature coming soon! For immediate assistance, please use our contact form.", type = "message", duration = 5)
-  })
-  
-  # Back to top functionality
-  observeEvent(input$back_to_top, {
-    runjs("smoothScrollToTop();")
-  })
-  
   # ===== MODAL CLOSE HANDLERS =====
   
   observeEvent(input$close_demo_modal, { removeModal() })
@@ -2412,6 +1903,185 @@ server <- function(input, output, session) {
         "FevaAI platform update: Enhanced natural language processing",
         "Join our upcoming webinar: 'Blockchain for Social Impact'",
         "New partnership announced with leading African university"
+      )
+      
+      # ===== SOLUTIONS SECTION =====
+      tags$section(
+        class = "solutions-section",
+        id = "solutions",
+        
+        # Solutions Background Elements
+        div(class = "solutions-background"),
+        
+        # Solutions Container
+        div(
+          class = "solutions-container",
+          
+          # Solutions Header
+          div(
+            class = "solutions-header",
+            
+            div(
+              class = "solutions-badge",
+              icon("cubes", class = "badge-icon"),
+              span("Product Suites")
+            ),
+            
+            h2(
+              class = "solutions-title",
+              "Industry Solutions",
+              tags$br(),
+              "Built for Africa"
+            ),
+            
+            p(
+              class = "solutions-subtitle",
+              "Pre‑built, enterprise‑ready platforms that solve real problems across government, healthcare, education, and finance—secure, scalable, and locally optimized."
+            )
+          ),
+          
+          # Solutions Grid
+          div(
+            class = "solutions-grid",
+            
+            # FevaAI Platform
+            div(class = "solution-card primary-solution",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("robot")),
+                    div(class = "solution-badge", "AI Platform")
+                ),
+                h3("FevaAI Platform"),
+                p("No‑code and pro‑code AI platform for vision, NLP, and predictive analytics with strong MLOps."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("No‑code model builder")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("50+ African languages")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("On‑prem or cloud deployment"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("TensorFlow", class = "tech-tag"),
+                    span("PyTorch", class = "tech-tag"),
+                    span("MLflow", class = "tech-tag"),
+                    span("Kafka", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("demo_fevaai", "View Demo", class = "btn btn-primary"),
+                    actionButton("contact_fevaai", "Get Started", class = "btn btn-outline")
+                )
+            ),
+            
+            # FevaChain (Coming Soon)
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("link")),
+                    div(class = "solution-badge", "Blockchain")
+                ),
+                h3("FevaChain"),
+                p("Sovereign blockchain for digital identity, verifiable credentials, and secure payments across borders."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Self‑sovereign identity")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Instant cross‑border settlement")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Smart contracts & compliance"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("Ethereum", class = "tech-tag"),
+                    span("Polygon", class = "tech-tag"),
+                    span("Hyperledger", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("notify_fevachain", "Get Notified", class = "btn btn-secondary"),
+                    actionButton("learn_more_chain", "Learn More", class = "btn btn-outline")
+                )
+            ),
+            
+            # FevaHealth (Coming Soon)
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("hospital")),
+                    div(class = "solution-badge", "HealthTech")
+                ),
+                h3("FevaHealth"),
+                p("Interoperable digital health platform: EMR, telemedicine, e‑pharmacy, and AI triage integrated."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("HL7/FHIR compliant")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Offline‑first clinics")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("AI decision support"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("FHIR", class = "tech-tag"),
+                    span("Keycloak", class = "tech-tag"),
+                    span("PostgreSQL", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("notify_fevahealth", "Get Notified", class = "btn btn-secondary"),
+                    actionButton("learn_more_health", "Learn More", class = "btn btn-outline")
+                )
+            ),
+            
+            # FevaEdu
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("graduation-cap")),
+                    div(class = "solution-badge", "EdTech")
+                ),
+                h3("FevaEdu"),
+                p("Learning platform with adaptive AI, assessments, and offline‑capable classrooms for schools and universities."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Adaptive learning")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Analytics & reporting")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Multi‑tenant SaaS"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("React", class = "tech-tag"),
+                    span("Node.js", class = "tech-tag"),
+                    span("Redis", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("contact_fevaedu", "Request Demo", class = "btn btn-primary"),
+                    actionButton("learn_more_edu", "Learn More", class = "btn btn-outline")
+                )
+            ),
+            
+            # FevaFinance
+            div(class = "solution-card",
+                div(class = "solution-header",
+                    div(class = "solution-icon", icon("landmark")),
+                    div(class = "solution-badge", "FinTech")
+                ),
+                h3("FevaFinance"),
+                p("Core digital finance stack for banks, MFIs, and fintechs—KYC, lending, compliance, and analytics."),
+                
+                div(class = "solution-highlights",
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("KYC/AML workflows")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Loan origination & scoring")),
+                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Open banking APIs"))
+                ),
+                
+                div(class = "solution-tech",
+                    span("Keycloak", class = "tech-tag"),
+                    span("Kubernetes", class = "tech-tag"),
+                    span("Elastic", class = "tech-tag")
+                ),
+                
+                div(class = "solution-footer",
+                    actionButton("contact_fevafinance", "Request Demo", class = "btn btn-primary"),
+                    actionButton("learn_more_finance", "Learn More", class = "btn btn-outline")
+                )
+            )
+          ),
+          
+        )
       )
       
       showNotification(

@@ -107,11 +107,11 @@
             
             if (scrollY > 100) {
                 header.classList.add('scrolled');
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'transparent';
+                header.style.boxShadow = 'none';
             } else {
                 header.classList.remove('scrolled');
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.background = 'transparent';
                 header.style.boxShadow = 'none';
             }
         },
