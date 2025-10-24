@@ -2362,6 +2362,36 @@ a:focus {
 .highlight-item { display: flex; align-items: center; gap: var(--space-3); color: rgba(255,255,255,0.9); }
 .highlight-icon { color: var(--primary); font-size: var(--text-lg); }
 
+/* White background cards styling */
+.solution-card:not(.primary-solution) h3 { 
+  color: var(--black); 
+  font-size: var(--text-2xl); 
+  font-weight: 700; 
+  margin-bottom: var(--space-3); 
+}
+
+.solution-card:not(.primary-solution) p { 
+  color: var(--gray-700); 
+  margin-bottom: var(--space-6); 
+  line-height: 1.6; 
+}
+
+.solution-card:not(.primary-solution) .highlight-item { 
+  color: var(--gray-700); 
+}
+
+.solution-card:not(.primary-solution) .highlight-icon { 
+  color: var(--primary); 
+}
+
+.solution-card:not(.primary-solution) .tech-tag {
+  background: rgba(5, 179, 5, 0.1);
+  border: 1px solid rgba(5, 179, 5, 0.3);
+  color: var(--primary);
+  font-size: var(--text-xs);
+  font-weight: 500;
+}
+
 .solution-tech { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-6); }
 
 .solution-footer { display: flex; gap: var(--space-4); }
@@ -4421,8 +4451,8 @@ a:focus {
 }
 
 .footer-logo-img {
-  width: 32px; /* Reduced */
-  height: 32px;
+  width: 160px; /* Increased 5x from 32px */
+  height: 160px;
 }
 
 .footer-brand-name {

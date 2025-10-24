@@ -192,11 +192,12 @@ ui <- tagList(
           class = "header-actions",
 
           # CTA Button
-          actionButton(
-            "header_cta",
-            "Get Started",
+          div(
             class = "btn btn-primary btn-cta",
-            icon = icon("arrow-right")
+            id = "header_cta",
+            onclick = "Shiny.setInputValue('header_cta', Math.random(), {priority: 'event'});",
+            span("Talk to Us", class = "btn-text"),
+            icon("external-link-alt", class = "btn-arrow")
           ),
           
           # Mobile Menu Toggle
@@ -1076,33 +1077,6 @@ ui <- tagList(
                     actionButton("contact_fevaedu", "Request Demo", class = "btn btn-primary"),
                     actionButton("learn_more_edu", "Learn More", class = "btn btn-outline")
                 )
-            ),
-            
-            # FevaFinance
-            div(class = "solution-card",
-                div(class = "solution-header",
-                    div(class = "solution-icon", icon("landmark")),
-                    div(class = "solution-badge", "FinTech")
-                ),
-                h3("FevaFinance"),
-                p("Core digital finance stack for banks, MFIs, and fintechs—KYC, lending, compliance, and analytics."),
-                
-                div(class = "solution-highlights",
-                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("KYC/AML workflows")),
-                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Loan origination & scoring")),
-                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Open banking APIs"))
-                ),
-                
-                div(class = "solution-tech",
-                    span("Keycloak", class = "tech-tag"),
-                    span("Kubernetes", class = "tech-tag"),
-                    span("Elastic", class = "tech-tag")
-                ),
-                
-                div(class = "solution-footer",
-                    actionButton("contact_fevafinance", "Request Demo", class = "btn btn-primary"),
-                    actionButton("learn_more_finance", "Learn More", class = "btn btn-outline")
-                )
             )
           ),
           
@@ -1307,9 +1281,7 @@ ui <- tagList(
             # Footer Brand Section
             div(class = "footer-brand",
                 div(class = "footer-logo",
-                    img(src = "assets/feva-logo-white.svg", alt = "Feva Logo", class = "footer-logo-img"),
-                    h3("FEVA", class = "footer-brand-name"),
-                    p("TechAfrica", class = "footer-brand-subtitle")
+                    img(src = "Feva.png", alt = "Feva Logo", class = "footer-logo-img")
                 ),
                 
                 p(class = "footer-description",
@@ -1352,7 +1324,6 @@ ui <- tagList(
                             tags$li(a(href = "#solutions", "FevaChain")),
                             tags$li(a(href = "#solutions", "FevaHealth")),
                             tags$li(a(href = "#solutions", "FevaEdu")),
-                            tags$li(a(href = "#solutions", "FevaFinance")),
                             tags$li(a(href = "#contact", "Custom Solutions"))
                     )
                 ),
@@ -2050,33 +2021,6 @@ server <- function(input, output, session) {
                 div(class = "solution-footer",
                     actionButton("contact_fevaedu", "Request Demo", class = "btn btn-primary"),
                     actionButton("learn_more_edu", "Learn More", class = "btn btn-outline")
-                )
-            ),
-            
-            # FevaFinance
-            div(class = "solution-card",
-                div(class = "solution-header",
-                    div(class = "solution-icon", icon("landmark")),
-                    div(class = "solution-badge", "FinTech")
-                ),
-                h3("FevaFinance"),
-                p("Core digital finance stack for banks, MFIs, and fintechs—KYC, lending, compliance, and analytics."),
-                
-                div(class = "solution-highlights",
-                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("KYC/AML workflows")),
-                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Loan origination & scoring")),
-                    div(class = "highlight-item", icon("check-circle", class = "highlight-icon"), span("Open banking APIs"))
-                ),
-                
-                div(class = "solution-tech",
-                    span("Keycloak", class = "tech-tag"),
-                    span("Kubernetes", class = "tech-tag"),
-                    span("Elastic", class = "tech-tag")
-                ),
-                
-                div(class = "solution-footer",
-                    actionButton("contact_fevafinance", "Request Demo", class = "btn btn-primary"),
-                    actionButton("learn_more_finance", "Learn More", class = "btn btn-outline")
                 )
             )
           ),
